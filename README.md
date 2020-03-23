@@ -1,4 +1,4 @@
-# HyTools
+# HyTools: Hyperspectral Processing tools
 
 HyTools is a python library for working with imaging spectroscopy data, with a focus on terrestrial scenes. 
 At it's core it consists of a series of functions for reading and writing ENVI-formatted images in addition to 
@@ -69,3 +69,82 @@ correction to remove brightness gradients.
 The topographic correction module uses the Sun-Canopy-Sensor (SCS+C) method developed by [Soenen *et al.* 2005](https://ieeexplore.ieee.org/document/1499030) to remove shadows caused by variation in topography.
 
 ![Topographic correction](examples/topo_correct.gif) 
+
+
+Goal:
+
+Maintain python code for processing hyperspectral imagery that is readable/understandable and can be used by anyone with no guidance from the authors of the code. The core of this code is a set of modular functions that can be easily strung together into a flexible processing workflow (ie. a command line script).
+
+Steps to achieving goal:
+
+Follow widely accepted style guides for writing code (PEP8).
+
+https://www.python.org/dev/peps/pep-0008/
+
+http://docs.python-guide.org/en/latest/writing/style/
+
+Use sphinx for code documentations.
+
+At the beginning of each script/module include a comment block that clearly describes what the code does.
+
+For methods drawn from the literature include full references in beginning comment block and line by line references where appropriate.
+
+Code should be able to run on both local machines and servers seamlessly, ie: consider memory limitations.
+
+Leverage existing python libraries for processing data (GDAL, sklearn…...). Limit use of obscure or abandoned packages.
+
+Rules/Guidelines:
+
+Submodule Structure
+
+Topographic correction
+
+SCSC
+Classifiers
+
+Cloud,shadow masks
+Landcover
+BRDF Correction
+
+Scattering kernel generation
+Multiplicative and additive correction
+Class specific correction
+Spectra processing
+
+Vector normalization
+Continuum removal
+Wavelet
+Spectrum Resampling
+
+Gaussian response approximation
+Weights optimization
+Atmospheric correction
+
+Atcor parameter processing
+Export NEON radiance data to proper format
+Ancillary tools
+
+Geotiff exporter
+ENVI parsing and reading
+NDSI creator
+ENVI exporter (for HDF)
+Image sampler
+MNF
+Apply trait models
+Point and polygon sampling
+Other
+
+Reconcile different file formats: ENVI vs. HDF
+
+Short term: Code for both
+
+Long term: Switch over to HDF?
+
+Provides compression
+Everything can be contained in a single file
+Very easy to access data, no need for parsing header or
+dealing with BSQ, BIP and BIL
+
+Include inplace/copy and edit option
+
+Include mini dataset to test code
